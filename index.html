@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Button</title>
+
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #ffeef2;
+    font-family: Arial;
+    overflow: hidden;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: #ff4d6d;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
+}
+
+#message {
+    position: absolute;
+    font-size: 40px;
+    color: #ff4d6d;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: 0.5s;
+}
+
+#message.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: float 3s linear forwards;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-200px); opacity: 0; }
+}
+</style>
+
+</head>
+
+<body>
+
+<button id="loveBtn">Áh 💕</button>
+<div id="message">Yaaay! 😍❤️ 3refti!</div>
+
+<script>
+const btn = document.getElementById("loveBtn");
+const message = document.getElementById("message");
+
+btn.addEventListener("click", () => {
+    message.classList.add("show");
+
+    for (let i = 0; i < 20; i++) {
+        createHeart();
+    }
+});
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 3000);
+}
+</script>
+
+</body>
+</html>
